@@ -13,15 +13,15 @@
 #define pulsador2 A2
 bool estadoAnterior= HIGH;
 
-#define SCREEN_WIDTH 128 // Ancho en píxeles de pantalla OLED
-#define SCREEN_HEIGHT 64 // Altura en píxeles de pantalla OLED
+#define SCREEN_WIDTH 128 
+#define SCREEN_HEIGHT 64 
 int tammensaje=0;
 float t=0,h=0,CO2=0;
 String mensaje=0;
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1); //Declaración de pantalla I2C
 
 
-// 1. Definir los estados
+
 typedef enum {
   ESPERAR,
   EMISION,
@@ -65,7 +65,7 @@ if (packetSize) {
 
 void LoRaTx() {
 
-      delay(2000);  // espera 2 segundos
+      delay(2000); 
 
       Serial.println("Enviando mensaje...");
       LoRa.beginPacket();
@@ -109,7 +109,7 @@ void setup() {
 //-------------------------
 
 
-   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // 
+   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
     Serial.println(F("OLED Falla"));
     while (1);
   }
@@ -124,7 +124,7 @@ void setup() {
   LoRa.setTxPower(20);
   Serial.println("LoRa listo");
 
-  InicializarMEF();  // <--- inicializa los estados
+  InicializarMEF();  
 }
 
 void loop(){
@@ -172,7 +172,7 @@ if (estadoAnterior == HIGH && estadoActualBoton == LOW) {
   Serial.println("Mensaje enviado: ENCENDER");
 }
 
-estadoAnterior = estadoActualBoton;  // actualizar para la próxima lectura
+estadoAnterior = estadoActualBoton;  
       }
 break;
  }
